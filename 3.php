@@ -1,16 +1,7 @@
 <?php
 
-// Exemplo de dados de faturamento diário em formato JSON
-$jsonFaturamento = '[
-    {"dia": 1, "valor": 1000.00},
-    {"dia": 2, "valor": 1500.00},
-    {"dia": 3, "valor": 0.00},
-    {"dia": 4, "valor": 2000.00},
-    {"dia": 5, "valor": 0.00},
-    {"dia": 6, "valor": 3000.00},
-    {"dia": 7, "valor": 0.00},
-    {"dia": 8, "valor": 3500.00}
-]';
+// Lê o conteúdo do arquivo 'dados.json'
+$jsonFaturamento = file_get_contents('dados.json');
 
 $faturamentoDiario = json_decode($jsonFaturamento, true);
 
@@ -18,7 +9,7 @@ if (!is_array($faturamentoDiario)) {
     die("Erro ao decodificar o JSON de faturamento diário.");
 }
 
-$menorFaturamento = PHP_FLOAT_MAX; 
+$menorFaturamento = PHP_FLOAT_MAX;
 $maiorFaturamento = PHP_FLOAT_MIN; 
 $somaFaturamento = 0;
 $diasComFaturamento = 0;
